@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<div class="backgruond">
+  <!-- Tab items -->
+  <div class="tabs">
+    <div class="tab-item active">
+      <i class="tab-icon fas fa-code"></i>
+      MP3
+    </div>
+    <div class="tab-item">
+      <i class="tab-icon fas fa-cog"></i>
+      MP4
+    </div>
+    <div class="tab-item">
+      <i class="tab-icon fas fa-plus-circle"></i>
+      KARAOK
+    </div>
+    <div class="tab-item">
+      <i class="tab-icon fas fa-pen-nib"></i>
+      LỜI BÀI HÁT
+    </div>
+    <div class="line"></div>
+  </div>
+
+  <!-- Tab content -->
+  <div class="tab-content">
+    <div class="tab-pane active">
+      <h1>CÁC PHƯƠNG THỨC CỦA ARRAY</h1>
+      <p>
+
+        Nội dung bài viết <br>
+|  1. Các phương thức thêm/xóa phần tử mảng<br>
+|  1.1. Phương thức splice<br>
+|  1.2. Phương thức slice<br>
+|  1.3. Phương thức concat<br>
+|  2. Phương thức duyệt mảng trong JavaScript<br>
+|  3. Các phương thức tìm kiếm trong mảng<br>
+|  3.1. Phương thức indexOf, lastIndexOf và includes<br>
+|  3.2. Phương thức find và findIndex<br>
+|  3.3. Phương thức filter<br>
+|  4. Các phương thức biến đổi mảng<br>
+|  4.1. Phương thức map<br>
+|  4.2. Phương thức sort<br>
+|  4.3. Phương thức reverse<br>
+|  4.4. Phương thức split và join<br>
+|  4.5. Phương thức reduce và reduceRight<br>
+|  5. Cách kiểm tra giá trị là mảng<br>
+|  6. Tham số thisArg<br>
+|  7. Tổng kết<br><br>
+|  - Có rất nhiều phương thức của mảng trong JavaScript. Nhờ đó, việc xử lý mảng trở nên dễ dàng hơn. Sau đây, mình sẽ tìm hiểu chi tiết về các phương thức xử lý mảng phổ biến nhất.<br>
+
+|  - Các phương thức của mảng trong Javascript<br>
+|  - Các phương thức thêm/xóa phần tử mảng<br>
+|  - Trong bài viết Array là gì? Array trong JavaScript, mình đã giới thiệu 4 phương thức cơ bản của mảng là:<br>
+
+|  - Phương thức arr.push(...items): thêm một hoặc nhiều phần tử vào cuối mảng.<br>
+|  - Phương thức arr.pop(): lấy ra và trả về phần tử cuối cùng của mảng.<br>
+|  - Phương thức arr.shift(): lấy ra và trả về phần tử đầu tiên của mảng.<br>
+|  - Phương thức arr.unshift(...items): thêm một hoặc nhiều phần tử vào đầu mảng.<br>
+|  - Ngoài ra, còn nhiều phương thức của mảng trong JavaScript nữa.<br>
+
+|  - Phương thức splice<br>
+|  - Làm sao để xóa phần tử bất kỳ trong mảng?<br>
+
+|  - Dĩ nhiên, mảng trong JavaScript cũng là object. Nghĩa là bạn có thể dùng delete để xóa một phần tử bất kỳ trong mảng dựa vào chỉ số.<br>
+
+|  let letters = ["a", "b", "c"];<br>
+
+|  delete letters[1]; // xóa phần tử "b"<br>
+|  console.log(letters[1]); // undefined<br>
+
+|  console.log(letters.length); // 3<br>
+|  - Vấn đề xảy ra là: mặc dù bạn đã xóa một phần tử trong mảng, nhưng độ dài của mảng length vẫn không đổi (bằng 3). Bởi vì, delete obj.key chỉ xóa giá trị của thuộc tính key trong object.<br>
+
+|  - Cái chúng ta mong muốn là: khi xóa phần tử của mảng thì độ dài mảng phải giảm đi. Đó chính là lý do phương thức splice ra đời.<br>
+
+|  - Phương thức arr.splice có thể xóa, thêm hoặc thay thế phần tử của mảng. Cú pháp phương thức splice là:<br>
+
+|  arr.splice(start[, deleteCount, elem1,..., elemN]);<br>
+|  - Phương thức splice xử lý mảng tại vị trí có chỉ số start bằng cách: xóa đi deleteCount phần tử, rồi chèn thêm các phần tử elem1,... elemN vào đúng vị trí đó. Sau đó, trả về mảng của những phần tử bị xóa.<br>
+
+|  - Ví dụ xóa đi 1 phần tử tại vị trí 1:<br>
+
+|  let letters = ["a", "b", "c"];<br>
+
+|  // từ vị trí có chỉ số 1, xóa đi 1 phần tử<br>
+|  letters.splice(1, 1);<br>
+
+|  console.log(letters); // (2) ['a', 'c']<br>
+|  - Ví dụ xóa đi 3 phần tử tại vị trí đầu tiên và thêm 2 phần tử khác:<br>
+
+|  let letters = ["a", "b", "c"];<br>
+
+|  // từ vị trí có chỉ số 0, xóa đi 3 phần tử, rồi thêm vào 2 phần tử<br>
+|  letters.splice(0, 3, "d", "e");<br>
+
+|  console.log(letters); // (2) ['d', 'e']<br>
+|  - Ví dụ trả về mảng các phần tử bị xóa:<br>
+
+let letters = ["a", "b", "c"];<br>
+
+// từ vị trí có chỉ số 1, xóa đi 2 phần tử là "b", "c"<br>
+// rồi thêm vào 1 phần tử "d"<br>
+let arr = letters.splice(1, 2, "d");<br>
+
+console.log(letters); // (2) ['a', 'd']<br>
+console.log(arr); // (2) ['b', 'c'] -> mảng các phần tử bị xóa<br>
+Phương thức splice cũng có thể thêm phần tử vào mảng mà không cần xóa đi phần tử nào, bằng cách truyền vào giá trị deleteCount bằng 0.<br>
+
+let letters = ["a", "b", "c"];<br>
+
+letters.splice("1", 0, "d", "e");<br>
+console.log(letters); // (5) ['a', 'd', 'e', 'b', 'c']<br>
+- Phương thức splice chấp nhận chỉ số âm. Nếu chỉ số âm thì thứ tự đếm là từ cuối lên đầu, ví dụ:<br>
+
+let letters = ["a", "b", "c"];<br>
+
+// chỉ số bằng -1 tức đếm 1 đơn vị từ cuối lên<br>
+// xóa đi 0 phần tử<br>
+// rồi chèn thêm 2 phần tử "d" và "e"<br>
+letters.splice(-1, 0, "d", "e");<br>
+console.log(letters); // (5) ['a', 'b', 'd', 'e', 'c']<br>
+- Phương thức slice<br>
+- Phương thức arr.slice đơn giản hơn phương thức arr.splice.<br>
+
+- Cú pháp phương thức slice là:<br>
+
+arr.slice([start], [end]);<br>
+- Phương thức này trả về mảng mới bằng cách copy mảng ban đầu từ vị trí start đến vị trí end (không bao gồm end). Cả hai giá trị start và end đều có thể âm, khi đó việc đếm được tính từ cuối của mảng.<br>
+
+- Phương thức của array arr.slice tương tự như phương thức của string str.slice, chỉ khác là trả về subarray chứ không phải là substring.<br>
+let letters = ["a", "b", "c", "d"];<br>
+
+// copy mảng letters từ vị trí 1 đến vị trí 3<br>
+let arr1 = letters.slice(1, 3);<br>
+console.log(arr1); // (2) ['b', 'c']<br>
+
+// copy mảng letters từ vị trí số 2 từ cuối lên đến cuối mảng<br>
+let arr2 = letters.slice(-2);<br>
+console.log(arr2); // (2) ['c', 'd']<br>
+- Phương thức concat<br>
+- Phương thức arr.concat trả về array mới bao gồm các giá trị của arr ban đầu, cộng thêm giá trị các phần tử trong array thêm vào hoặc các giá trị khác.<br>
+
+- Cú pháp phương thức arr.concat là:<br>
+
+arr.concat(arg1, arg2,...)<br>
+- Phương thức này chấp nhận số lượng tham số tùy ý. Và giá trị của arg1, arg2,... có thể là mảng hoặc giá trị khác.<br>
+
+- Giả sử phần tử argN là mảng thì tất cả các phần tử trong mảng argN được sao chép. Ngược lại, nếu giá trị của argN không phải mảng thì giá trị của chính nó được copy vào mảng, ví dụ:<br>
+
+let arr1 = [1, 2];<br>
+
+// tạo mảng mới từ mảng arr1 và mảng [3, 4]<br>
+let arr2 = arr1.concat([3, 4]);<br>
+console.log(arr2); // (4) [1, 2, 3, 4]<br>
+
+// tạo mảng mới từ mảng arr1 và mảng [3, 4] và [5, 6]<br>
+let arr3 = arr1.concat([3, 4], [5, 6]);<br>
+console.log(arr3); // (6) [1, 2, 3, 4, 5, 6]<br>
+
+// tạo mảng mới từ mảng arr1 và mảng [3, 4] cùng với các giá trị 5, 6<br>
+let arr4 = arr1.concat([3, 4], 5, 6);<br>
+console.log(arr4); // (6) [1, 2, 3, 4, 5, 6]<br>
+- Bình thường, phương thức concat chỉ copy các phần tử từ mảng. Nhưng với các object khác, thậm chí là dạng array-like (có chỉ số và thuộc tính length) thì giá trị của object cũng được copy vào:<br>
+
+let arr = [1, 2];<br>
+
+let arrayLike = {<br>
+  0: "hello",<br>
+  length: 1,<br>
+};<br>
+
+// copy toàn bộ object vào mảng<br>
+console.log(arr.concat(arrayLike)); // (3) [1, 2, {...}]<br>
+- Nhưng nếu object array-like đó có thuộc tính đặc biệt là Symbol.isConcatSpreadable thì cách xử lý hoàn toàn giống như của mảng bình thường:<br>
+
+let arr = [1, 2];<br>
+
+|let arrayLike = {<br>
+|  0: "hello",<br>
+|  1: "hi",<br>
+|  length: 2,<br>
+|  [Symbol.isConcatSpreadable]: true,<br>
+|};<br>
+
+// từng phần tử của mảng được copy vào mảng arr<br><br>
+console.log(arr.concat(arrayLike)); // (4) [1, 2, "hello", "hi"]<br><br>
+- Phương thức duyệt mảng trong JavaScript<br><br>
+- Phương thức của mảng trong JavaScript giúp duyệt tất cả các phần tử là: forEach.<br><br>
+
+- Phương thức này cho phép bạn thực hiện một hàm trên mỗi phần tử trong mảng với cú pháp:<br><br>
+
+arr.forEach(function (item, index, array) {<br><br>
+  // code xử lý trong đây<br><br>
+});<br><br>
+- Trong đó:<br><br>
+
+item: là phần tử đang duyệt.<br><br>
+index: chỉ số của phần tử đang duyệt.<br><br>
+array: chính là arr.<br><br>
+- Ví dụ:<br><br>
+
+["a", "b", "c"].forEach(function (item, index, array) {<br>
+  console.log(`item ${item} at index ${index} in array ${array}`);<br>
+});<br>
+- Kết quả<br>
+item a at index 0 in array a,b,c<br>
+item b at index 1 in array a,b,c<br>
+item c at index 2 in array a,b,c<br>
+- Để hiểu hơn về forEach, bạn có thể đọc thêm bài viết: JavaScript forEach là cái quái gì?<br>
+
+- Các phương thức tìm kiếm trong mảng<br>
+- Sau đây mình sẽ tìm hiểu về các phương thức của mảng trong JavaScript giúp tìm kiếm.<br>
+- Phương thức indexOf, lastIndexOf và includes<br>
+- Các phương thức indexOf, lastIndexOf và includes có cú pháp và cách sử dụng tương tự như các phương thức cùng tên trong string.<br>
+
+- Phương thức arr.indexOf(item, from): tìm kiếm item trong mảng, bắt đầu từ vị trí from và trả về chỉ số vị trí tìm thấy, ngược lại thì trả về -1.<br>
+- Phương thức arr.lastIndexOf(item, from): tương tự phương thức indexOf là tìm kiếm item trong mảng và bắt đầu từ vị trí from nhưng thứ tự tìm kiếm từ phải sang trái.<br>
+- Phương thức arr.includes(item, from): tìm kiếm item trong mảng từ vị trí from, và trả về true nếu tìm thấy, ngược lại trả về false.<br>
+- - Các ví dụ:<br>
+
+let arr = [1, 0, 1, false];<br>
+
+console.log(arr.indexOf(0)); // 1<br>
+console.log(arr.indexOf(false)); // 3<br>
+console.log(arr.indexOf(null)); // -1<br>
+
+console.log(arr.indexOf(1)); // 0<br>
+console.log(arr.lastIndexOf(1)); // 2<br>
+
+console.log(arr.includes(1)); // true<br>
+- Chú ý: các phương thức trên thường sử dụng toán tử so sánh bằng nghiêm ngặt === để kiểm tra.<br>
+
+- Nếu bạn tìm kiếm false thì kết quả trả về là vị trí chính xác của false chứ không phải 0.<br>
+
+- Nếu bạn muốn kiểm tra sự tồn tại mà không quan tâm đến chỉ số thì nên dùng arr.includes.<br>
+
+- Một điểm khác nhau giữa arr.includes với arr.indexOf và arr.lastIndexOf là arr.includes có thể tìm chính xác NaN.<br>
+
+let arr = [NaN];<br>
+
+console.log(arr.includes(NaN)); // true<br>
+console.log(arr.indexOf(NaN)); // -1<br>
+console.log(arr.lastIndexOf(NaN)); // -1<br>
+- Phương thức find và findIndex<br>
+- Giả sử bạn có một mảng các object. Làm sao để tìm kiếm object trong mảng thỏa mãn một số điều kiện cho trước?<br>
+
+- Để giải quyết vấn đề này, bạn có thể dùng phương thức arr.find hoặc arr.findIndex.<br>
+
+- Phương thức arr.find(fn) có cú pháp là:<br>
+
+let result = arr.find(function (item, index, array) {<br>
+  // code xử lý<br>
+});<br>
+Trong đó:<br>
+
+item: là phần tử đang duyệt.<br>
+index: chỉ số của phần tử đang duyệt.<br>
+array: chính là arr.<br>
+- Phương thức arr.find(fn) tìm kiếm một phần tử trong mảng thỏa mãn hàm fn (nói cách khác là hàm fn trả về true) và trả về phần tử tìm được, ngược lại thì trả về undefined.<br>
+
+- Ví dụ tìm kiếm user có id === 2 trong một mảng:<br>
+
+let users = [<br>
+  { id: 1, name: "Alex" },<br>
+  { id: 2, name: "John" },<br>
+  { id: 3, name: "Anna" },<br>
+];<br>
+
+let user = users.find((item) => item.id === 2);<br>
+
+console.log(user.name); // John<br>
+- Trong ví dụ trên, hàm cung cấp cho phương thức find là arrow function (item) => item.id === 2 với một tham số item (các tham số còn lại không sử dụng).<br>
+
+- Phương thức arr.findIndex có cú pháp hoàn toàn giống với arr.find. Chỉ khác là, arr.findIndex trả về chỉ số của phần tử tìm thấy, ngược lại thì trả về -1, ví dụ:<br>
+
+let users = [<br>
+  { id: 1, name: "Alex" },<br>
+  { id: 2, name: "John" },<br>
+  { id: 3, name: "Anna" },<br>
+];<br>
+
+let index = users.findIndex((item) => item.id === 2);<br>
+console.log(index); // 1<br>
+- Phương thức filter<br>
+- Phương thức arr.find và arr.findIndex chỉ tìm kiếm phần tử đầu tiên thỏa mãn. Để tìm kiếm nhiều phần tử thỏa mãn, bạn có thể dùng phương thức arr.filter.<br>
+
+- Cú pháp của arr.filter tương tự như arr.find và arr.findIndex:<br>
+
+let results = arr.filter(function (item, index, array) {<br>
+  // code kiểm tra<br>
+});<br>
+- Phương thức arr.filter trả về một mảng các phần tử thỏa mãn, ngược lại thì trả về mảng rỗng:<br>
+
+let users = [<br>
+  { id: 1, name: "Alex" },<br>
+  { id: 2, name: "John" },<br>
+  { id: 3, name: "Anna" },<br>
+];<br>
+
+let results = users.filter((item) => item.id <= 2);<br>
+console.log(results.length); // 2<br>
+
+let others = users.filter((item) => item.id > 5);<br>
+console.log(others.length); // 0<br>
+- Các phương thức biến đổi mảng<br>
+- Sau đây là các phương thức của mảng trong JavaScript giúp tạo mảng mới từ một mảng gốc hoặc thay đổi thứ tự của mảng gốc.<br>
+
+- Phương thức map<br>
+- Phương thức arr.map là một trong những phương thức phổ biến nhất của mảng.<br>
+
+- Phương thức này thực hiện một hàm trên mỗi phần tử của mảng và trả về một mảng các kết quả với cú pháp là:<br>
+
+let result = arr.map(function (item, index, array) {<br>
+  // trả về giá trị mới từ mỗi item<br>
+});<br>
+- Ví dụ từ mảng các string, suy ra mảng các độ dài tương ứng là:<br>
+
+let lengths = ["Dog", "Fish", "Elephant"].map((item) => item.length);<br>
+console.log(lengths); // (3) [3, 4, 8]<br>
+- Phương thức sort<br>
+- Phương thức arr.sort sắp xếp các phần tử trong mảng theo thứ tự.<br>
+
+- Phương thức này trả về mảng đã được sắp xếp. Tuy nhiên, mình thường bỏ qua giá trị trả về. Vì thực chất là chính arr đã bị thay đổi.<br>
+
+- Ví dụ:<br>
+
+let arr = [1, 2, 15];<br>
+arr.sort();<br>
+console.log(arr); // (3) [1, 15, 2]<br>
+- Kết quả trả về là mảng [1, 15, 2]. Bạn có thấy điểm bất thường gì ở đây không?<br>
+
+- 💡 Mặc định các phần tử được sắp xếp theo thứ tự string.<br>
+- Trong ví dụ trên, các phần tử được chuyển đổi kiểu dữ liệu về string để so sánh. Mà "1" < "2" là true. Nên kết quả như trên là đúng.<br>
+
+- Để sắp xếp theo tứ tự mong muốn, bạn cần truyền vào một hàm để so sánh.<br>
+
+- Ví dụ một hàm so sánh:<br>
+
+function compare(a, b) {<br>
+  if (a > b) return 1; // a đứng sau b<br>
+  if (a == b) return 0; // a, b bằng nhau<br>
+  if (a < b) return -1; // a đứng trước b<br>
+}
+- Áp dụng hàm so sánh vào phương thức arr.sort để sắp xếp mảng số:<br>
+
+let arr = [1, 2, 15];<br>
+
+arr.sort(function (a, b) {  if (a > b) return 1; // a đứng sau b  if (a == b) return 0; // a, b bằng nhau  if (a < b) return -1; // a đứng trước b});<br>
+console.log(arr); // (3) [1, 2, 15]<br>
+Kết quả bây giờ đã đúng như mong muốn.<br>
+
+- Phương thức reverse<br>
+- Phương thức arr.reverse giúp đảo ngược mảng gốc, ví dụ:<br>
+
+let arr = [1, 2, 3, 4, 5];<br>
+
+arr.reverse();<br>
+
+console.log(arr); // (5) [5, 4, 3, 2, 1]<br>
+- Phương thức split và join<br>
+- Phương thức arr.split(delim) giúp tách string thành một mảng với giá trị dùng để phân tách là delim.<br>
+
+- Ví dụ phân tách string thành mảng dựa trên dấu phẩy ,:<br>
+
+let str = "a,b,c,d";<br>
+
+let arr = str.split(",");<br>
+
+console.log(arr); // (4) [a, b, c, d]<br>
+- Phương thức arr.split còn có tham số thứ hai dùng để giới hạn chiều dài của mảng:<br>
+
+let str = "a,b,c,d";<br>
+
+// giới hạn số phần tử của mảng là 2<br>
+let arr = str.split(",", 2);<br>
+
+console.log(arr); // (2) [a, b]<br>
+- Phương thức arr.join xử lý ngược lại với phương thức arr.split. Phương thức này trả về một string bằng cách ghép các phần tử mảng với "một kí tự kết nối".<br>
+
+- Ví dụ ghép các phần tử mảng bởi dấu ,:<br>
+
+let arr = ["a", "b", "c", "d"];<br>
+
+// ghép các phần tử mảng bằng kí tự ,<br>
+let str = arr.join(",");<br>
+
+console.log(str); // a,b,c,d<br>
+- Phương thức reduce và reduceRight<br>
+- Phương thức arr.reduce và arr.reduceRight dùng để tính toán và trả về một giá trị duy nhất từ các phần tử mảng.<br>
+
+- Cú pháp phương thức reduce là:<br>
+
+let value = arr.reduce(<br>
+  function (accumulator, item, index, array) {<br>
+    // code xử lý<br>
+  },<br>
+  [initial]<br>
+);<br>
+- Trong đó:<br>
+
+- - initial: giá trị khởi tạo, mặc định là 0.<br>
+- - function là hàm xử lý mỗi phần tử của mảng và trả về giá trị tích lũy, với các tham số:<br>
+- - accumulator: giá trị tích lũy sau lần duyệt phần tử phía trước và trong lần đầu tiên thì accumulator bằng giá trị khởi tạo initial.<br>
+- - item: phần tử hiện tại đang duyệt.<br>
+- - index: chỉ số của phần tử đang duyệt.<br>
+- - array: mảng đang duyệt, chính là arr.<br>
+- Kết quả trả về của phương thức reduce chính là giá trị cuối cùng của accumulator.<br>
+
+- Ví dụ tính tổng các phần tử trong mảng:<br>
+
+let arr = [1, 2, 3, 4, 5];<br>
+<br>
+// giá trị khởi tạo không truyền nên mặc định là 0<br>
+// tại mỗi lần duyệt, giá trị tích lũy được cộng với giá trị phần tử hiện tại<br>
+let result = arr.reduce((sum, current) => sum + current);<br>
+
+console.log(result); // 15<br>
+- Phương thức arr.reduceRight tương tự như phương thức arr.reduce, chỉ khác là thứ tự duyệt từ phải sang trái.<br>
+
+- Để biết thêm về arr.reduce, mời bạn tham khảo bài viết: Ứng dụng reduce trong mảng.<br>
+
+- Cách kiểm tra giá trị là mảng<br>
+- Vì array bản chất là object, nên bạn không thể dùng typeof để xác định array.<br>
+
+let arr = [];<br>
+let obj = {};<br>
+
+console.log(typeof arr); // object<br>
+console.log(typeof obj); // object<br>
+- Để giải quyết vấn đề trên, bạn có thể sử dụng phương thức Array.isArray(value). Phương thức này trả về true nếu value là mảng, ngược lại thì trả về false.<br>
+
+let arr = [];<br>
+let obj = {};<br>
+
+console.log(Array.isArray(arr)); // true<br>
+console.log(Array.isArray(obj)); // false<br>
+- Tham số thisArg<br>
+- Hầu hết các phương thức của mảng trong JavaScript đều có tham số cuối cùng là thisArg.<br>
+
+- ham số này không bắt buộc và ít sử dụng nên mình không nói đến trong các phần trên.<br>
+- Cú pháp đầy đủ các phương thức với thisArg là:<br>
+
+arr.find(func, thisArg);<br>
+arr.filter(func, thisArg);<br>
+arr.map(func, thisArg);<br>
+// ...<br>
+// thisArg là tham số cuối cùng và không bắt buộc phải có<br>
+- Giá trị của thisArg chính là giá trị của this ở trong hàm func.<br>
+
+- Ví dụ lọc các giá trị của mảng nằm trong đoạn từ min đến max:<br>
+
+// mảng ban đầu<br>
+let arr = [1, 3, 5, 2, 6, 10, 4];<br>
+
+// object điều kiện<br>
+let boundary1 = {<br>
+  min: 1,<br>
+  max: 5,<br>
+};<br><br>
+
+let boundary2 = {<br>
+  min: 3,<br>
+  max: 8,<br>
+};<br>
+
+// filter function<br>
+// giá trị của this là object ứng với thisArg<br>
+function filterFunc(item) {<br>
+  return item >= this.min && item <= this.max;<br>
+}<br>
+
+// filter<br>
+let ret1 = arr.filter(filterFunc, boundary1);<br>
+let ret2 = arr.filter(filterFunc, boundary2);<br>
+
+// kết quả<br>
+console.log(ret1); // (5) [1, 3, 5, 2, 4]<br>
+console.log(ret2); // (4) [3, 5, 6, 4]<br>
+- Tổng kết<br>
+- Sau đây là tổng kết một số phương thức của mảng trong JavaScript:<br>
+
+- Thêm/xóa phần tử mảng:<br>
+- push(...items): thêm một hay nhiều phần tử vào cuối mảng.<br>
+- pop(): lấy ra và trả về phần từ cuối cùng của mảng.<br>
+- shift(): lấy ra và trả về phần tử đầu tiên của mảng.<br>
+- unshift(...items): thêm vào một hay nhiều phần tử vào đầu mảng.<br>
+- splice(pos, deleteCount, ...items): tại vị trí pos, xóa deleteCount phần tử rồi chèn thêm vào đó các items.<br>
+- slice(start, end): tạo mảng mới bằng cách copy các phần tử của mảng từ vị trí start đến end (không bao gồm end).<br>
+- concat(...items): trả về mảng mới bằng cách copy tất cả các phần tử của mảng hiện tại, rồi chèn thêm các items phía sau. Nếu items là một mảng thì các phần tử của mảng sẽ được copy, ngược lại thì copy cả items.<br>
+- Tìm kiếm trong mảng:<br>
+- indexOf(item, pos): tìm phần tử item trong mảng bắt đầu từ vị trí pos và trả về chỉ số vị trí tìm thấy, ngược lại trả về -1.<br>
+- lastIndexOf(item, pos): tương tự như phương thức indexOf(item, pos) nhưng thứ tự tìm kiếm là từ phải sang trái.<br>
+- includes(value): trả về true nếu mảng chứa giá trị value, ngược lại thì trả về false.<br>
+- find(func): tìm và trả về phần tử đầu tiên trong mảng thỏa mãn hàm func (tức hàm func trả về true).<br>
+- filter(func): tìm và trả về tất cả các phần tử trong mảng thỏa mãn hàm func (tức hàm func trả về true).<br>
+- findIndex(func): tương tự phương thức find(func) nhưng giá trị trả về là chỉ số.<br>
+- Duyệt mảng:<br>
+- forEach(func): gọi hàm func ứng với mỗi phần tử của mảng và không trả về giá trị nào.<br>
+- Biến đổi mảng:<br>
+- map(func): tạo mảng mới từ kết quả của việc gọi hàm func ứng với mỗi phần tử mảng.<br>
+- sort(func): sắp xếp mảng hiện tại theo thứ tự.<br>
+- reverse(): đảo ngược thứ tự mảng hiện tại.<br>
+- split(delim): tách string thành mảng với giá trị phân tách là delim.<br>
+- join(delim): ghép các phần tử mảng với giá trị kết nối là delim và trả về string sau khi kết nối.<br>
+- reduce(func, initial): tính toán và trả về một giá trị duy nhất bằng cách gọi hàm func với mỗi phần tử mảng. Kết quả của mỗi lượt duyệt sẽ được tích lũy và truyền vào lượt tiếp theo.<br>
+- reduceRight(func, initial): tương tự như reduce nhưng thứ tự duyệt là từ phải sang trái.<br>
+- Để kiểm tra một giá trị là mảng, bạn sử dụng phương thức Array.isArray(value).<br>
+
+-Trên đây là các phương thức của mảng trong JavaScript mà mình thấy hay sử dụng nhất. Dĩ nhiên, còn nhiều phương thức khác nữa, bạn có thể tự tìm hiểu thêm tại các bài viết sau:<br>
+
+      </p>
+      <h1>500 danh từ</h1>
+      <p>
+        _	Danh từ	Phiên âm	Ý nghĩa	<br>
+_	art	/ɑːt /	Nghệ thuật	<br>
+_	area	/ˈeərɪə /	Khu vực	<br>
+_	activity	/ækˈtɪvɪti /	Hoạt động	<br>
+_	analysis	/əˈnæləsɪs /	Nghiên cứu	<br>
+_	army	/ˈɑːmi /	Quân đội 	<br>
+_	article	/ˈɑːtɪkl /	Điều khoản	<br>
+_	audience	/ˈɔːdjəns /	Khán giả	<br>
+_	advertising	/ˈædvətaɪzɪŋ /	Quảng cáo	<br>
+_	addition	/əˈdɪʃ(ə)n /	Thêm vào	<br>
+_	apartment	/əˈpɑːtmənt /	Căn hộ	<br>
+_	attention	/əˈtɛnʃ(ə)n /	Chú ý	<br>
+_	appearance	/əˈpɪərəns /	Xuất hiện	<br>
+_	association	/əˌsəʊsɪˈeɪʃ(ə)n /	Sự kết hợp	<br>
+_	advice	/ədˈvaɪs /	Lời khuyên	<br>
+_	application	/ˌæplɪˈkeɪʃ(ə)n /	Ứng dụng	<br>
+_	ad	/æd /	Quảng cáo	<br>
+_	agency	/ˈeɪʤənsi /	Đại lý	<br>
+_	administration	/ədˌmɪnɪsˈtreɪʃ(ə)n /	Quyền quản trị	<br>
+_	aspect	/ˈæspɛkt /	Diện mạo	<br>
+_	attitude	/ˈætɪtjuːd /	Thái độ	<br>
+_	alcohol	/ˈælkəhɒl /	Rượu	<br>
+_	argument	/ˈɑːgjʊmənt /	Đối số	<br>
+_	agreement	/əˈgriːmənt /	Sự đồng ý	<br>
+_	actor	/ˈæktə /	Diễn viên	<br>
+_	anxiety	/æŋˈzaɪəti /	Lo ngại	<br>
+_	atmosphere	/ˈætməsfɪə /	Không khí	<br>
+_	awareness	/əˈweənəs /	Nhận thức	<br>
+_	accident	/ˈæksɪdənt /	Tai nạn	<br>
+_	airport	/ˈeəpɔːt /	Sân bay	<br>
+_	appointment	/əˈpɔɪntmənt /	Cuộc hẹn	<br>
+_	arrival	/əˈraɪvəl /	Đến	<br>
+_	assumption	/əˈsʌmpʃ(ə)n /	Giả định	<br>
+_	affair	/əˈfeə /	Việc	<br>
+_	ambition	/æmˈbɪʃ(ə)n /	Tham vọng	<br>
+_	analyst	/ˈænəlɪst /	Phân tích	<br>
+_	apple	/ˈæpl /	Táo	<br>
+_	assignment	/əˈsaɪnmənt /	Phân công	<br>
+_	assistant	/əˈsɪstənt /	Phụ tá	<br>
+_	bird	/bɜːd /	Chim	<br>
+_	basis	/ˈbeɪsɪs /	Căn cứ	<br>
+_	boyfriend	/ˈbɔɪˌfrɛnd /	Bạn trai	<br>
+_	blood	/blʌd /	Máu	<br>
+_	bread	/brɛd /	Bánh mì	<br>
+_	boring	/ˈbɔːrɪŋ /	Chán nản	<br>
+_	basket	/ˈbɑːskɪt /	Cái giỏ	<br>
+_	bonus	/ˈbəʊnəs /	Tiền thưởng	<br>
+_	baseball	/ˈbeɪsbɔːl /	Bóng chày	<br>
+_	breath	/brɛθ /	Hơi thở	<br>
+_	buyer	/ˈbaɪə /	Người mua	<br>
+_	bathroom	/ˈbɑːθru(ː)m /	Phòng tắm	<br>
+_	bedroom	/ˈbɛdru(ː)m /	Phòng ngủ	<br>
+_	beer	/bɪə /	Bia	<br>
+_	birthday	/ˈbɜːθdeɪ /	Ngày sinh nhật	<br>
+_	business	/ˈbɪznɪs /	Kinh doanh	<br>
+_	control	/kənˈtrəʊl /	Kiểm soát	<br>
+_	community	/kəˈmjuːnɪti /	Cộng đồng	<br>
+_	country	/ˈkʌntri /	Đất nước	<br>
+_	camera	/ˈkæmərə /	Máy chụp hình	<br>
+_	child	/ʧaɪld /	Trẻ em	<br>
+_	combination	/ˌkɒmbɪˈneɪʃən /	Phối hợp	<br>
+_	communication	/kəˌmjuːnɪˈkeɪʃən /	Liên lạc	<br>
+_	competition	/ˌkɒmpɪˈtɪʃən /	Cuộc thi	<br>
+_	category	/ˈkætɪgəri /	Thể loại	<br>
+_	cigarette	/ˌsɪgəˈrɛt /	Thuốc lá	<br>
+_	context	/ˈkɒntɛkst /	Bối cảnh	<br>
+_	cell	/sɛl /	Tế bào	<br>
+_	concept	/ˈkɒnsɛpt /	Khái niệm	<br>
+_	customer	/ˈkʌstəmə /	Khách hàng	<br>
+_	city	/ˈsɪti /	Thành phố	<br>
+_	county	/ˈkaʊnti /	Quận	<br>
+_	collection	/kəˈlɛkʃən /	Bộ sưu tập	<br>
+_	college	/ˈkɒlɪʤ /	Trường đại học	<br>
+_	connection	/kəˈnɛkʃən /	Liên quan	<br>
+_	criticism	/ˈkrɪtɪsɪzm /	Sự chỉ trích	<br>
+_	complaint	/kəmˈpleɪnt /	Lời phàn nàn	<br>
+_	contract	/ˈkɒntrækt /	Hợp đồng	<br>
+_	cancer	/ˈkænsə /	Ung thư	<br>
+_	currency	/ˈkʌrənsi /	Tiền tệ	<br>
+_	classroom	/ˈklɑːsrʊm /	Lớp học	<br>
+_	climate	/ˈklaɪmɪt /	Khí hậu	<br>
+_	comparison	/kəmˈpærɪsn /	Sự so sánh	<br>
+_	confusion	/kənˈfjuːʒən /	Nhầm lẫn	<br>
+_	construction	/kənˈstrʌkʃən /	Xây dựng	<br>
+_	charity	/ˈʧærɪti /	Bố thí	<br>
+_	cousin	/ˈkʌzn /	Anh em họ	<br>
+_	cabinet	/ˈkæbɪnɪt /	Buồng	<br>
+_	childhood	/ˈʧaɪldhʊd /	Thời thơ ấu	<br>
+_	church	/ʧɜːʧ /	Nhà thờ	<br>
+_	clothes	/kləʊðz /	Quần áo	<br>
+_	coffee	/ˈkɒfi /	Cà phê	<br>
+_	chapter	/ˈʧæptə /	Chương	<br>
+_	committee	/kəˈmɪti /	Ủy ban	<br>
+_	conversation	/ˌkɒnvəˈseɪʃən /	Đàm thoại	<br>
+_	chest	/ʧɛst /	Ngực	<br>
+_	chocolate	/ˈʧɒkəlɪt /	Sô cô la	<br>
+_	conclusion	/kənˈkluːʒən /	Phần kết luận	<br>
+_	contribution	/ˌkɒntrɪˈbjuːʃən /	Sự đóng góp	<br>
+_	cookie	/ˈkʊki /	Bánh cookie	<br>
+_	courage	/ˈkʌrɪʤ /	Lòng can đảm	<br>
+_	celebration	/ˌsɛlɪˈbreɪʃən /	Lễ kỷ niệm	<br>
+_	championship	/ˈʧæmpjənʃɪp /	Chức vô địch	<br>
+_	cheek	/ʧiːk /	Gò má	<br>
+_	client	/ˈklaɪənt /	Khách hàng	<br>
+_	consequence	/ˈkɒnsɪkwəns /	Kết quả	<br>
+_	data	/ˈdeɪtə /	Dữ liệu	<br>
+_	definition	/ˌdɛfɪˈnɪʃən /	Định nghĩa	<br>
+_	development	/dɪˈvɛləpmənt /	Phát triển	<br>
+_	direction	/dɪˈrɛkʃən /	Phương hướng	<br>
+_	department	/dɪˈpɑːtmənt /	Bộ	<br>
+_	difference	/ˈdɪfrəns /	Khác nhau	<br>
+_	disease	/dɪˈziːz /	Căn bệnh	<br>
+_	disk	/dɪsk /	Đĩa	<br>
+_	decision	/dɪˈsɪʒən /	Phán quyết	<br>
+_	distribution	/ˌdɪstrɪˈbjuːʃən /	Phân phát	<br>
+_	driver	/ˈdraɪvə /	Người lái xe	<br>
+_	dealer	/ˈdiːlə /	Người chia bài	<br>
+_	debate	/dɪˈbeɪt /	Tranh luận	<br>
+_	death	/dɛθ /	Sự chết	<br>
+_	discussion	/dɪsˈkʌʃən /	Thảo luận	<br>
+_	depth	/dɛpθ /	Chiều sâu	<br>
+_	depression	/dɪˈprɛʃən /	Phiền muộn	<br>
+_	debt	/dɛt /	Nợ nần	<br>
+_	description	/dɪsˈkrɪpʃən /	Miêu tả	<br>
+_	director	/dɪˈrɛktə /	Giám đốc	<br>
+_	delivery	/dɪˈlɪvəri /	Giao hàng	<br>
+_	device	/dɪˈvaɪs /	Thiết bị	<br>
+_	difficulty	/ˈdɪfɪkəlti /	Khó khăn	<br>
+_	drama	/ˈdrɑːmə /	Kịch	<br>
+_	disaster	/dɪˈzɑːstə /	Thảm họa	<br>
+_	dinner	/ˈdɪnə /	Bữa tối	<br>
+_	drawing	/ˈdrɔːɪŋ /	Bản vẽ	<br>
+_	database	/ˈdeɪtəˌbeɪs /	Cơ sở dữ liệu	<br>
+_	dad	/dæd /	Cha	<br>
+_	desk	/dɛsk /	Bàn giấy	<br>
+_	drawer	/ˈdrɔːə /	Ngăn kéo	<br>
+_	departure	/dɪˈpɑːʧə /	Khởi hành	<br>
+_	diamond	/ˈdaɪəmənd /	Kim cương	<br>
+_	dirt	/dɜːt /	Bụi	<br>
+_	economics	/ˌiːkəˈnɒmɪks /	Kinh tế học	<br>
+_	exam	/ɪgˈzæm /	Thi	<br>
+_	equipment	/ɪˈkwɪpmənt /	Thiết bị	<br>
+_	environment	/ɪnˈvaɪərənmənt /	Môi trường	<br>
+_	energy	/ˈɛnəʤi /	Năng lượng	<br>
+_	education	/ˌɛdju(ː)ˈkeɪʃən /	Sự giáo dục	<br>
+_	event	/ɪˈvɛnt /	Biến cố	<br>
+_	entertainment	/ˌɛntəˈteɪnmənt /	Giải trí	<br>
+_	effort	/ˈɛfət /	Cố gắng	<br>
+_	expression	/ɪksˈprɛʃən /	Biểu hiện	<br>
+_	estate	/ɪsˈteɪt /	Tài sản	<br>
+_	emphasis	/ˈɛmfəsɪs /	Sự nhấn mạnh	<br>
+_	employment	/ɪmˈplɔɪmənt /	Việc làm	<br>
+_	engineering	/ˌɛnʤɪˈnɪərɪŋ /	Kỹ thuật	<br>
+_	entry	/ˈɛntri /	Lối vào	<br>
+_	election	/ɪˈlɛkʃən /	Sự bầu cử	<br>
+_	engine	/ˈɛnʤɪn /	Động cơ	<br>
+_	elevator	/ˈɛlɪveɪtə /	Thang máy	<br>
+_	emotion	/ɪˈməʊʃən /	Xúc động	<br>
+_	employee	/ˌɛmplɔɪˈiː /	Công nhân	<br>
+_	employer	/ɪmˈplɔɪə /	Sử dụng lao động	<br>
+_	editor	/ˈɛdɪtə /	Biên tập viên	<br>
+_	efficiency	/ɪˈfɪʃənsi /	Hiệu quả	<br>
+_	excitement	/ɪkˈsaɪtmənt /	Phấn khích	<br>
+_	extent	/ɪksˈtɛnt /	Mức độ	<br>
+_	enthusiasm	/ɪnˈθjuːzɪæzm /	Hăng hái	<br>
+_	error	/ˈɛrə /	Lỗi	<br>
+_	explanation	/ˌɛkspləˈneɪʃən /	Giải thích	<br>
+_	establishment	/ɪsˈtæblɪʃmənt /	Thành lập	<br>
+_	examination	/ɪgˌzæmɪˈneɪʃən /	Kiểm tra	<br>
+_	ear	/ɪə /	Tai	<br>
+_	example	/ɪgˈzɑːmpl /	Thí dụ	<br>
+_	family	/ˈfæmɪli /	Gia đình	<br>
+_	food	/fuːd /	Thức ăn	<br>
+_	fact	/fækt /	Việc	<br>
+_	freedom	/ˈfriːdəm /	Sự tự do	<br>
+_	fishing	/ˈfɪʃɪŋ /	Đánh cá	<br>
+_	failure	/ˈfeɪljə /	Thất bại	<br>
+_	flight	/flaɪt /	Chuyến bay	<br>
+_	finding	/ˈfaɪndɪŋ /	Phát hiện	<br>
+_	foundation	/faʊnˈdeɪʃən /	Nền tảng	<br>
+_	football	/ˈfʊtbɔːl /	Bóng đá	<br>
+_	feedback	/ˈfiːdbæk /	Thông tin phản hồi	<br>
+_	farmer	/ˈfɑːmə /	Nông dân	<br>
+_	fortune	/ˈfɔːʧən /	Vận may	<br>
+_	friendship	/ˈfrɛndʃɪp /	Tình bạn	<br>
+_	funeral	/ˈfjuːnərəl /	Đám ma	<br>
+_	film	/fɪlm /	Phim ảnh	<br>
+_	government	/ˈgʌvnmənt /	Chính phủ	<br>
+_	growth	/grəʊθ /	Tăng trưởng	<br>
+_	grandmother	/ˈgrænˌmʌðə /	Bà ngoại	<br>
+_	guidance	/ˈgaɪdəns /	Hướng dẫn	<br>
+_	guest	/gɛst /	Khách	<br>
+_	guitar	/gɪˈtɑː /	Đàn guitar	<br>
+_	gate	/geɪt /	Cửa	<br>
+_	girl	/gɜːl /	Cô gái	<br>
+_	garbage	/ˈgɑːbɪʤ /	Đống rác	<br>
+_	grocery	/ˈgrəʊsəri /	Tạp hóa	<br>
+_	gene	/ʤiːn /	Gen	<br>
+_	game	/geɪm /	Trò chơi	<br>
+_	history	/ˈhɪstəri /	Lịch sử	<br>
+_	health	/hɛlθ /	Sức khỏe	<br>
+_	housing	/ˈhaʊzɪŋ /	Nhà ở	<br>
+_	heart	/hɑːt /	Tim	<br>
+_	highway	/ˈhaɪweɪ /	Xa lộ	<br>
+_	hotel	/həʊˈtɛl /	Khách sạn	<br>
+_	height	/haɪt /	Chiều cao	<br>
+_	homework	/ˈhəʊmˌwɜːk /	Bài tập về nhà	<br>
+_	hair	/heə /	Tóc	<br>
+_	hearing	/ˈhɪərɪŋ /	Thính giác	<br>
+_	hall	/hɔːl /	Đại sảnh	<br>
+_	historian	/hɪsˈtɔːrɪən /	Sử gia	<br>
+_	hospital	/ˈhɒspɪtl /	Bệnh viện	<br>
+_	honey	/ˈhʌni /	Mật ong	<br>
+_	hat	/hæt /	Mũ	<br>
+_	information	/ˌɪnfəˈmeɪʃən /	Thông tin	<br>
+_	internet	/ˈɪntəˌnɛt /	Internet	<br>
+_	investment	/ɪnˈvɛstmənt /	Đầu tư	<br>
+_	industry	/ˈɪndəstri /	Ngành công nghiệp	<br>
+_	instance	/ˈɪnstəns /	Trường hợp	<br>
+_	income	/ˈɪnkʌm /	Lợi tức	<br>
+_	introduction	/ˌɪntrəˈdʌkʃən /	Sự giới thiệu	<br>
+_	inflation	/ɪnˈfleɪʃən /	Sự lạm phát	<br>
+_	insurance	/ɪnˈʃʊərəns /	Bảo hiểm	<br>
+_	importance	/ɪmˈpɔːtəns /	Tầm quan trọng	<br>
+_	imagination	/ɪˌmæʤɪˈneɪʃən /	Sự tưởng tượng	<br>
+_	interaction	/ˌɪntərˈækʃən /	Tương tác	<br>
+_	initiative	/ɪˈnɪʃɪətɪv /	Sáng kiến	<br>
+_	injury	/ˈɪnʤəri /	Vết thương	<br>
+_	instruction	/ɪnˈstrʌkʃən /	Hướng dẫn	<br>
+_	impression	/ɪmˈprɛʃən /	Ấn tượng	<br>
+_	improvement	/ɪmˈpruːvmənt /	Sự cải thiện	<br>
+_	independence	/ˌɪndɪˈpɛndəns /	Độc lập	<br>
+_	insect	/ˈɪnsɛkt /	Côn trùng	<br>
+_	inspection	/ɪnˈspɛkʃən /	Sự kiểm tra	<br>
+_	inspector	/ɪnˈspɛktə /	Viên thanh tra	<br>
+_	indication	/ˌɪndɪˈkeɪʃən /	Dấu hiệu	<br>
+_	intention	/ɪnˈtɛnʃən /	Mục đích	<br>
+_	judgment	/ˈʤʌʤmənt /	Án	<br>
+_	king	/kɪŋ /	Vua	<br>
+_	law	/lɔː /	Pháp luật	<br>
+_	literature	/ˈlɪtərɪʧə /	Văn chương	<br>
+_	love	/lʌv /	Tình Yêu	<br>
+_	library	/ˈlaɪbrəri /	Thư viện	<br>
+_	language	/ˈlæŋgwɪʤ /	Ngôn ngữ	<br>
+_	location	/ləʊˈkeɪʃən /	Vị trí	<br>
+_	length	/lɛŋθ /	Chiều dài	<br>
+_	lake	/leɪk /	Hồ	<br>
+_	loss	/lɒs /	Sự mất	<br>
+_	limit	/ˈlɪmɪt /	Giới hạn	<br>
+_	leadership	/ˈliːdəʃɪp /	Khả năng lãnh đạo	<br>
+_	leader	/ˈliːdə /	Lãnh đạo	<br>
+_	lab	/læb /	Phòng thí nghiệm	<br>
+_	ladder	/ˈlædə /	Thang	<br>
+_	lady	/ˈleɪdi /	Phụ nữ	<br>
+_	life	/laɪf /	Đời sống	<br>
+_	map	/mæp /	Bản đồ	<br>
+_	meat	/miːt /	Thịt	<br>
+_	music	/ˈmjuːzɪk /	Âm nhạc	<br>
+_	method	/ˈmɛθəd /	Phương pháp	<br>
+_	media	/ˈmɛdɪə /	Phương tiện truyền thông	<br>
+_	management	/ˈmænɪʤmənt /	Quản lý	<br>
+_	month	/mʌnθ /	Tháng	<br>
+_	marketing	/ˈmɑːkɪtɪŋ /	Thị trường	<br>
+_	marriage	/ˈmærɪʤ /	Hôn nhân	<br>
+_	meaning	/ˈmiːnɪŋ /	Nghĩa	<br>
+_	math	/mæθ /	Toán học	<br>
+_	moment	/ˈməʊmənt /	Chốc lát	<br>
+_	magazine	/ˌmægəˈziːn /	Tạp chí	<br>
+_	member	/ˈmɛmbə /	Thành viên	<br>
+_	message	/ˈmɛsɪʤ /	Thông điệp	<br>
+_	mood	/muːd /	Khí sắc	<br>
+_	memory	/ˈmɛməri /	Trí nhớ	<br>
+_	membership	/ˈmɛmbəʃɪp /	Thành viên	<br>
+_	mixture	/ˈmɪksʧə /	Hỗn hợp	<br>
+_	mall	/mɔːl /	Trung tâm mua sắm	<br>
+_	manager	/ˈmænɪʤə /	Người quản lý	<br>
+_	mom	/mɒm /	Mẹ	<br>
+_	measurement	/ˈmɛʒəmənt /	Sự đo lường	<br>
+_	mode	/məʊd /	Chế độ	<br>
+_	mud	/mʌd /	Bùn	<br>
+_	maintenance	/ˈmeɪntənəns /	Bảo trì	<br>
+_	manufacturer	/ˌmænjʊˈfækʧərə /	Nhà chế tạo	<br>
+_	meal	/miːl /	Bữa ăn	<br>
+_	menu	/ˈmɛnjuː /	Thực đơn	<br>
+_	midnight	/ˈmɪdnaɪt /	Nửa đêm	<br>
+_	money	/ˈmʌni /	Tiền	<br>
+_	nature	/ˈneɪʧə /	Bản chất	<br>
+_	nation	/ˈneɪʃən /	Quốc gia	<br>
+_	newspaper	/ˈnjuːzˌpeɪpə /	Báo	<br>
+_	negotiation	/nɪˌgəʊʃɪˈeɪʃən /	Đàm phán	<br>
+_	news	/njuːz /	Tin tức	<br>
+_	night	/naɪt /	Đêm	<br>
+_	obligation	/ˌɒblɪˈgeɪʃən /	Nghĩa vụ	<br>
+_	office	/ˈɒfɪs /	Văn phòng	<br>
+_	operation	/ˌɒpəˈreɪʃən /	Hoạt động	<br>
+_	opinion	/əˈpɪnjən /	Ý kiến	<br>
+_	opportunity	/ˌɒpəˈtjuːnɪti /	Cơ hội	<br>
+_	orange	/ˈɒrɪnʤ /	Trái cam	<br>
+_	organization	/ˌɔːgənaɪˈzeɪʃən /	Cơ quan	<br>
+_	outcome	/ˈaʊtkʌm /	Kết quả	<br>
+_	oven	/ˈʌvn /	Lò nướng	<br>
+_	owner	/ˈəʊnə /	Chủ nhân	<br>
+_	painting	/ˈpeɪntɪŋ /	Bức tranh	<br>
+_	paper	/ˈpeɪpə /	Giấy	<br>
+_	passenger	/ˈpæsɪnʤə /	Hành khách	<br>
+_	passion	/ˈpæʃən /	Tình yêu	<br>
+_	patience	/ˈpeɪʃəns /	Kiên nhẫn	<br>
+_	payment	/ˈpeɪmənt /	Thanh toán	<br>
+_	penalty	/ˈpɛnlti /	Hình phạt	<br>
+_	people	/ˈpiːpl /	Người	<br>
+_	percentage	/pəˈsɛntɪʤ /	Tỷ lệ phần trăm	<br>
+_	perception	/pəˈsɛpʃən /	Sự nhận thức	<br>
+_	performance	/pəˈfɔːməns /	Hiệu suất	<br>
+_	permission	/pəˈmɪʃən /	Sự cho phép	<br>
+_	person	/ˈpɜːsn /	Người	<br>
+_	personality	/ˌpɜːsəˈnælɪti /	Nhân cách	<br>
+_	perspective	/pəˈspɛktɪv /	Quan điểm	<br>
+_	philosophy	/fɪˈlɒsəfi /	Triết học	<br>
+_	phone	/fəʊn /	Điện thoại	<br>
+_	photo	/ˈfəʊtəʊ /	Ảnh	<br>
+_	physics	/ˈfɪzɪks /	Vật lý	<br>
+_	piano	/pɪˈænəʊ /	Dương cầm	<br>
+_	pie	/paɪ /	Bánh	<br>
+_	pizza	/ˈpiːtsə /	Bánh pizza	<br>
+_	platform	/ˈplætfɔːm /	Nền tảng	<br>
+_	player	/ˈpleɪə /	Người chơi	<br>
+_	poem	/ˈpəʊɪm /	Bài thơ	<br>
+_	poet	/ˈpəʊɪt /	Thi sĩ	<br>
+_	poetry	/ˈpəʊɪtri /	Thơ phú	<br>
+_	police	/pəˈliːs /	Cảnh sát	<br>
+_	policy	/ˈpɒlɪsi /	Chính sách	<br>
+_	politics	/ˈpɒlɪtɪks /	Chính trị	<br>
+_	pollution	/pəˈluːʃən /	Ô nhiễm	<br>
+_	population	/ˌpɒpjʊˈleɪʃən /	Dân số	<br>
+_	possession	/pəˈzɛʃən /	Sở hữu	<br>
+_	possibility	/ˌpɒsəˈbɪlɪti /	Khả năng	<br>
+_	potato	/pəˈteɪtəʊ /	Khoai tây	<br>
+_	power	/ˈpaʊə /	Quyền lực	<br>
+_	preference	/ˈprɛfərəns /	Sự ưa thích	<br>
+_	preparation	/ˌprɛpəˈreɪʃən /	Sự chuẩn bị	<br>
+_	presence	/ˈprɛzns /	Sự hiện diện	<br>
+_	presentation	/ˌprɛzɛnˈteɪʃən /	Trình bày	<br>
+_	president	/ˈprɛzɪdənt /	Chủ tịch	<br>
+_	priority	/praɪˈɒrɪti /	Quyền ưu tiên	<br>
+_	problem	/ˈprɒbləm /	Vấn đề	<br>
+_	procedure	/prəˈsiːʤə /	Phương pháp	<br>
+_	product	/ˈprɒdʌkt /	Sản phẩm	<br>
+_	profession	/prəˈfɛʃən /	Nghề nghiệp	<br>
+_	professor	/prəˈfɛsə /	Giáo sư	<br>
+_	promotion	/prəˈməʊʃən /	Khuyến mãi	<br>
+_	property	/ˈprɒpəti /	Bất động sản	<br>
+_	proposal	/prəˈpəʊzəl /	Đề nghị	<br>
+_	protection	/prəˈtɛkʃən /	Sự bảo vệ	<br>
+_	psychology	/saɪˈkɒləʤi /	Tâm lý học	<br>
+_	quality	/ˈkwɒlɪti /	Chất lượng	<br>
+_	quantity	/ˈkwɒntɪti /	Số lượng	<br>
+_	queen	/kwiːn /	Nữ hoàng	<br>
+_	ratio	/ˈreɪʃɪəʊ /	Tỉ lệ	<br>
+_	reaction	/ri(ː)ˈækʃən /	Sự phản ứng	<br>
+_	reading	/ˈriːdɪŋ /	Cách đọc	<br>
+_	reality	/ri(ː)ˈælɪti /	Thực tế	<br>
+_	reception	/rɪˈsɛpʃən /	Tiếp nhận	<br>
+_	recipe	/ˈrɛsɪpi /	Công thức	<br>
+_	recognition	/ˌrɛkəgˈnɪʃən /	Sự công nhận	<br>
+_	recommendation	/ˌrɛkəmɛnˈdeɪʃən /	Khuyến nghị	<br>
+_	recording	/rɪˈkɔːdɪŋ /	Ghi âm	<br>
+_	reflection	/rɪˈflɛkʃən /	Sự phản xạ	<br>
+_	refrigerator	/rɪˈfrɪʤəreɪtə /	Tủ lạnh	<br>
+_	region	/ˈriːʤən /	Vùng	<br>
+_	relation	/rɪˈleɪʃən /	Quan hệ	<br>
+_	relationship	/rɪˈleɪʃənʃɪp /	Mối quan hệ	<br>
+_	replacement	/rɪˈpleɪsmənt /	Sự thay thế	<br>
+_	republic	/rɪˈpʌblɪk /	Nước cộng hòa	<br>
+_	reputation	/ˌrɛpju(ː)ˈteɪʃən /	Danh tiếng	<br>
+_	requirement	/rɪˈkwaɪəmənt /	Yêu cầu	<br>
+_	resolution	/ˌrɛzəˈluːʃən /	Độ phân giải	<br>
+_	resource	/rɪˈsɔːs /	Tài nguyên	<br>
+_	respect	/rɪsˈpɛkt /	Tôn trọng	<br>
+_	response	/rɪsˈpɒns /	Câu trả lời	<br>
+_	responsibility	/rɪsˌpɒnsəˈbɪlɪti /	Trách nhiệm	<br>
+_	restaurant	/ˈrɛstrɒnt /	Nhà hàng	<br>
+_	revenue	/ˈrɛvɪnjuː /	Lợi tức	<br>
+_	revolution	/ˌrɛvəˈluːʃən /	Cuộc cách mạng	<br>
+_	river	/ˈrɪvə /	Sông	<br>
+_	road	/rəʊd /	Đường	<br>
+_	role	/rəʊl /	Vai trò	<br>
+_	safety	/ˈseɪfti /	Sự an toàn	<br>
+_	salad	/ˈsæləd /	Xà lách	<br>
+_	sample	/ˈsɑːmpl /	Mẫu	<br>
+_	satisfaction	/ˌsætɪsˈfækʃən /	Sự hài lòng	<br>
+_	scene	/siːn /	Sân khấu	<br>
+_	science	/ˈsaɪəns /	Khoa học	<br>
+_	seat	/siːt /	Ghế	<br>
+_	secretary	/ˈsɛkrətri /	Thư ký	<br>
+_	sector	/ˈsɛktə /	Khu vực	<br>
+_	security	/sɪˈkjʊərɪti /	An ninh	<br>
+_	selection	/sɪˈlɛkʃən /	Sự lựa chọn	<br>
+_	series	/ˈsɪəriːz /	Loạt	<br>
+_	session	/ˈsɛʃən /	Buổi họp	<br>
+_	setting	/ˈsɛtɪŋ /	Thiết lập	<br>
+_	shirt	/ʃɜːt /	Áo sơ mi	<br>
+_	shopping	/ˈʃɒpɪŋ /	Mua sắm	<br>
+_	signature	/ˈsɪgnɪʧə /	Chữ ký	<br>
+_	significance	/sɪgˈnɪfɪkəns /	Ý nghĩa	<br>
+_	singer	/ˈsɪŋə /	Ca sĩ	<br>
+_	sir	/sɜː /	Ngài	<br>
+_	sister	/ˈsɪstə /	Chị	<br>
+_	situation	/ˌsɪtjʊˈeɪʃən /	Tình hình	<br>
+_	skill	/skɪl /	Kỹ năng	<br>
+_	society	/səˈsaɪəti /	Xã hội	<br>
+_	software	/ˈsɒftweə /	Phần mềm	<br>
+_	solution	/səˈluːʃən /	Dung dịch	<br>
+_	son	/sʌn /	Con trai	<br>
+_	song	/sɒŋ /	Bài hát	<br>
+_	soup	/suːp /	Món súp	<br>
+_	speaker	/ˈspiːkə /	Loa	<br>
+_	speech	/ˈspiːkə /	Lời nói	<br>
+_	statement	/ˈsteɪtmənt /	Tuyên bố	<br>
+_	steak	/steɪk /	Miếng bò hầm	<br>
+_	storage	/ˈstɔːrɪʤ /	Lưu trữ	<br>
+_	story	/ˈstɔːri /	Câu chuyện	<br>
+_	stranger	/ˈstreɪnʤə /	Người lạ	<br>
+_	strategy	/ˈstrætɪʤi /	Chiến lược	<br>
+_	student	/ˈstjuːdənt /	Sinh viên	<br>
+_	studio	/ˈstjuːdɪəʊ /	Phòng thu	<br>
+_	study	/ˈstʌdi /	Nghiên cứu	<br>
+_	success	/səkˈsɛs /	Sự thành công	<br>
+_	suggestion	/səˈʤɛsʧən /	Gợi ý	<br>
+_	supermarket	/ˈsjuːpəˌmɑːkɪt /	Siêu thị	<br>
+_	surgery	/ˈsɜːʤəri /	Phẫu thuật	<br>
+_	sympathy	/ˈsɪmpəθi /	Thông cảm	<br>
+_	system	/ˈsɪstɪm /	Hệ thống	<br>
+_	tale	/teɪl /	Truyện	<br>
+_	tea	/tiː /	Trà	<br>
+_	teacher	/ˈtiːʧə /	Giáo viên	<br>
+_	teaching	/ˈtiːʧɪŋ /	Giảng dạy	<br>
+_	technology	/tɛkˈnɒləʤi /	Công nghệ	<br>
+_	television	/ˈtɛlɪˌvɪʒən /	Tivi	<br>
+_	temperature	/ˈtɛmprɪʧə /	Nhiệt độ	<br>
+_	tennis	/ˈtɛnɪs /	Quần vợt	<br>
+_	tension	/ˈtɛnʃən /	Sức ép	<br>
+_	thanks	/θæŋks /	Lời cảm ơn	<br>
+_	theory	/ˈθɪəri /	Lý thuyết	<br>
+_	thing	/θɪŋ /	những vật	<br>
+_	thought	/θɔːt /	Tư tưởng	<br>
+_	throat	/θrəʊt /	Họng	<br>
+_	time	/taɪm /	Thời gian	<br>
+_	tongue	/tʌŋ /	Lưỡi	<br>
+_	tooth	/tuːθ /	Răng	<br>
+_	topic	/ˈtɒpɪk /	Chủ đề	<br>
+_	town	/taʊn /	Thành phố	<br>
+_	tradition	/trəˈdɪʃən /	Truyền thống	<br>
+_	trainer	/ˈtreɪnə /	Huấn luyện viên	<br>
+_	transportation	/ˌtrænspɔːˈteɪʃən /	Giao thông vận tải	<br>
+_	truth	/truːθ /	Sự thật	<br>
+_	two	/tuː /	Hai	<br>
+_	uncle	/ˈʌŋkl /	Chú	<br>
+_	understanding	/ˌʌndəˈstændɪŋ /	Hiểu biết	<br>
+_	union	/ˈjuːnjən /	Liên hiệp	<br>
+_	unit	/ˈjuːnɪt /	Đơn vị	<br>
+_	university	/ˌjuːnɪˈvɜːsɪti /	Trường đại học	<br>
+_	user	/ˈjuːzə /	Người sử dụng	<br>
+_	variation	/ˌveərɪˈeɪʃən /	Sự biến đổi	<br>
+_	variety	/vəˈraɪəti /	Nhiều	<br>
+_	vehicle	/ˈviːɪkl /	Xe cộ	<br>
+_	version	/ˈvɜːʃən /	Phiên bản	<br>
+_	video	/ˈvɪdɪəʊ /	Video	<br>
+_	village	/ˈvɪlɪʤ /	Làng	<br>
+_	virus	/ˈvaɪərəs /	Virus	<br>
+_	volume	/ˈvɒljʊm /	Thể tích	<br>
+_	warning	/ˈwɔːnɪŋ /	Cảnh báo	<br>
+_	water	/ˈwɔːtə /	Nước	<br>
+_	way	/weɪ /	Đường	<br>
+_	weakness	/ˈwiːknɪs /	Yếu đuối	<br>
+_	wealth	/wɛlθ /	Sự giàu có	<br>
+_	wedding	/ˈwɛdɪŋ /	Kết hôn	<br>
+_	week	/wiːk /	Tuần	<br>
+_	while	/waɪl /	Trong khi	<br>
+_	wife	/waɪf /	Vợ	<br>
+_	winner	/ˈwɪnə /	Người chiến thắng	<br>
+_	woman	/ˈwʊmən /	Đàn bà	<br>
+_	wood	/wʊd /	Gỗ	<br>
+_	work	/wɜːk /	Công việc	<br>
+_	worker	/ˈwɜːkə /	Công nhân	<br>
+_	world	/wɜːld /	Thế giới	<br>
+_	writer	/ˈraɪtə /	Nhà văn	<br>
+_	writing	/ˈraɪtɪŋ /	Viết	<br>
+_	year	/jɪə /	Năm	<br>
+_	youth	/juːθ/	thiếu niên	<br>
+_	yield	/jiːld/	năng suất	<br>
+_	yacht	/jɒt/	thuyền buồm	<br>
+_	yawls	/ɔːl/	sợi dây	<br>
+_	yardman	/ˈjɒd.mæn/	người làm sân	<br>
+_	yardbird	/ˈjʒeɪl.bɜːd/	chim sơn ca	<br>
+_	yeanling	/ˈjɜː.nɪŋ/	dê con	<br>
+_	zone	/zoun/	khu vực, miền, vùng	<br>
+_	Zen	/zen/	Đạo Thiền	<br>
+_	Zillionaire	/zɪl.jəˈneər/	Nhà giàu kết sù, kẻ giàu sụ	<br>
+_	Zebra	/ˈzeb.rə/	Ngựa vằn	<br>
+_	Zebu	/ˈziː.buː/	bò u (ở Châu Á, Châu Phi)	<br>
+_	Zeus	/zjuːs/	Thần Dớt	<br>
+
+
+
+      </p>
+    </div>
+    <div class="tab-pane">
+      <h2>Angular</h2>
+      <p></p>
+      
+    </div>
+    <div class="tab-pane">
+      <h2>Ember</h2>
+      <p>
+    </div>
+    <div class="tab-pane">
+      <h2>Vue.js</h2>
+      <div class="G">
+        <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+      </div>
+      
+      <p>
+  </div>
+</div>
+<script src="./main.js"></script>
+   
+</body>
+</html>
